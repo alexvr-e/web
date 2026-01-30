@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fomento Estadística</title>
+    <!-- CSS-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.2.2/dist/css/materialize.min.css">
+    <style media="screen">
+        body {
+            line-height: 1.5;
+            font-family: sans-serif;
+
+
+        }
+
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row1 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        /*.gallery*/
+        .gallery {
+            width: 100%;
+            display: block;
+            min-height: 100vh;
+            background-color: #ffffff;
+            padding: 50px 0;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .gallery .gallery-filter {
+            padding: 0 15px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery .gallery-filter2 {
+            padding: 0 15px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .gallery .gallery-filter .filter-item {
+            color: #2639a8;
+            font-size: 17px;
+            border: 2px solid #2639a8;
+            text-transform: uppercase;
+            display: inline-block;
+            border-radius: 20px;
+            margin-right: 8px;
+            cursor: pointer;
+            padding: 8px 20px 8px 20px;
+            line-height: 1.2;
+            transition: all 0.3s ease;
+        }
+
+        .gallery .gallery-filter2 .filter-item2 {
+            color: #ef1616;
+            font-size: 17px;
+            border: 2px solid #ef1616;
+            text-transform: uppercase;
+            display: inline-block;
+            border-radius: 20px;
+            margin-right: 8px;
+            cursor: pointer;
+            padding: 8px 20px 8px 20px;
+            line-height: 1.2;
+            transition: all 0.3s ease;
+        }
+
+        .gallery .gallery-filter .filter-item.active {
+            color: white;
+            border-color: #16b5ef;
+            background: #16b5ef;
+        }
+
+        .gallery .gallery-filter2 .filter-item2.active {
+            color: white;
+            border-color: #ef1616;
+            background: #ef1616;
+        }
+
+
+        .gallery .gallery-item-inner img {
+            width: 100%;
+            border: 3px solid #d4dad9;
+
+        }
+
+        .gallery-item-inner:hover {}
+
+        .gallery .gallery-item.show {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .texto-descriptivo {}
+
+        .gallery-item:hover .texto-descriptivo {
+            display: block;
+            /* Muestra el texto al pasar el ratón */
+
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .gallery .gallery-item.hide {
+            display: none;
+        }
+
+        /*responsive*/
+
+
+        @media(max-width: 491px) {
+            .gallery .gallery-item {
+                width: 50%;
+            }
+
+
+        }
+
+        @media(min-width: 900px) {
+
+            .mostrar_pequeno {
+                display: none;
+            }
+        }
+
+        @media(max-width: 467px) {
+            .gallery .gallery-item {
+                width: 100%;
+            }
+
+            .gallery .gallery-filter .filter-item {
+                margin-bottom: 10px;
+            }
+
+            .gallery .gallery-filter2 .filter-item {
+                margin-bottom: 10px;
+            }
+
+
+        }
+
+        @media(max-width: 900px) {
+
+
+            p {
+                font-size: 10px;
+            }
+
+            h4 {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .mostrar_grande {
+                display: none;
+            }
+
+            .mostrar_pequeno {
+                font-size: 14px !important;
+            }
+
+            .filter-item {
+                font-size: 12px !important;
+            }
+
+            .filter-item2 {
+                font-size: 12px !important;
+            }
+        }
+
+
+
+
+        .button {
+            border-radius: 4px;
+            background-color: #f4511e;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 300px;
+            cursor: pointer;
+            display: block;
+
+            margin: 0 auto;
+        }
+
+        .button span {
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            background-color: #ff5d5d;
+            height: 80px;
+
+        }
+
+
+        .footer:before {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 75px;
+            background-color: #ef7f16;
+            text-align: center;
+
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Espacio entre la imagen y el texto */
+            justify-content: center;
+        }
+
+        
+    </style>
+
+
+
+</head>
+
+<body>
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href='https://sites.google.com/educacion.navarra.es/fomentoestadistica/eu' target="_blank">Euskera</a>
+        </li>
+        <li class="divider"></li>
+        <li><a href='https://sites.google.com/educacion.navarra.es/fomentoestadistica/en' target="_blank">English</a>
+        </li>
+    </ul>
+    <nav class="nav navbar" style="text-align: left;">
+
+        <div class="nav-wrapper">
+            &nbsp&nbsp&nbsp&nbsp&nbsp
+            <img src="https://drive.google.com/thumbnail?id=1U7GNYf6NQx2k252s3LT-m1MdjwVCEboB" alt=""
+                class="responsive-img valign" width="70">
+            <p class="mostrar_grande" style='color: rgb(255, 255, 255); line-height: 1.5;'>Grupo de trabajo de
+                Estadística Educativa. Departamento de Educación del Gobierno de Navarra. Actividades bajo licencia</p>
+            <p class="mostrar_pequeno" style='color: rgb(255, 255, 255); line-height: 1.5;'>Grupo de trabajo de
+                Estadística Educativa (Navarra)</p>
+
+            <img src="https://drive.google.com/thumbnail?id=1QN2vgJXVPRa13zAn-ho4iR7BuB8wYIkI" alt=""
+                class="responsive-img valign mostrar_grande" width="120">
+            <ul id="btn_idiomas">
+
+                <!--<li> <a href='https://sites.google.com/educacion.navarra.es/fomentoestadistica/eu' target="_blank">
+                        <span>Euskera</span></a></li>
+
+                <li> <a href='https://sites.google.com/educacion.navarra.es/fomentoestadistica/en' target="_blank">
+                        <span>English</span></a></li>-->
+                <li><a class="dropdown-trigger" data-target="dropdown1"><i class="material-icons">language
+                            arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+
+
+    </nav>
+
+
+    <section class="gallery">
+        <!--<a class="button" style="vertical-align:middle"
+            href='https://sites.google.com/educacion.navarra.es/fomentoestadistica-privada/' target="_blank"><span>Zona
+                profesores</span></a><br>-->
+        <div class="container">
+            <div class="row1">
+                <div id="botones" class="gallery-filter">
+                    <span class="filter-item active" data-filter="all" onclick="cerrarcollapsible()">Todos</span>
+                    <span class="filter-item" data-filter="1eso" onclick="cerrarcollapsible()">1º ESO</span>
+                    <span class="filter-item" data-filter="2eso" onclick="cerrarcollapsible()">2º ESO</span>
+                    <span class="filter-item" data-filter="3eso" onclick="cerrarcollapsible()">3º ESO</span>
+                    <span class="filter-item" data-filter="4eso" onclick="cerrarcollapsible()">4º ESO</span>
+                    <span class="filter-item" data-filter="1bach" onclick="cerrarcollapsible()">1º BACH</span>
+                    <span class="filter-item" data-filter="2bach" onclick="cerrarcollapsible()">2º BACH</span>
+                </div>
+            </div>
+            <div class="row1">
+                <div id="botones2" class="gallery-filter2">
+                    <span class="filter-item2 active" data-filter="all2" onclick="cerrarcollapsible()">Todo</span>
+                    <span class="filter-item2" data-filter="situacion" onclick="cerrarcollapsible()">Situaciones de
+                        aprendizaje</span>
+                    <span class="filter-item2" data-filter="pildora" onclick="cerrarcollapsible()">Píldoras
+                        estadísticas</span>
+                </div>
+            </div>
+
+            <!-- Inicio Del Collapsible -->
+            <ul class="collapsible popout">
+
+                <!-- Inicio Item número 1 -->
+                <li class="gallery-item all all2 1eso 2eso 3eso 4eso pildora">
+                    <div class="collapsible-header">
+
+                        <div class="row valign-wrapper">
+                            <div class="col s6 m4 l3">
+                                <img src="https://drive.google.com/thumbnail?id=1KhmxqzNTLY4CV-48Izd65zm8oOOLmjt2"
+                                    alt="" class="responsive-img valign" />
+                            </div>
+                            <div class="col s6 m8 l9">
+                                <h4>Aproximación a la probabilidad: Lanzamiento de monedas</h4>
+                                <p style="text-align: justify;"> <b>Resumen:</b> Comprobaremos como al realizar muchos
+                                    lanzamientos, los resultados se van aproximando a la idea intuitiva de que la mitad
+                                    de las veces nos saldrá cara y la
+                                    otra cruz.
+                                </p>
+                                <br>
+                                <p style="text-align: justify;"> <b>Nivel:</b> Desde 1º ESO a 4º ESO. Recomendada para
+                                    2º ESO.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <br>
+                        <a class="btn elevated rounded"
+                            href='https://drive.google.com/file/d/1o53YF2WKg2qhYo5MhydpZaALSJRdOsmr/view?usp=sharing'
+                            target="_blank" style="text-align: center;">Más información</a><br><br>
+                    </div>
+                </li>
+
+
+                <!-- Fin Item número 1 -->
+
+                <!-- Inicio Item número 2 -->
+                <li class="gallery-item all all2 1bach situacion">
+                    <div class="collapsible-header">
+
+                        <div class="row valign-wrapper">
+                            <div class="col s6 m4 l3">
+                                <img src="https://drive.google.com/thumbnail?id=1k-hbLw44tLmp6EdSgqIcHzsfdvZmKJ0I"
+                                    alt="" class="responsive-img valign" />
+                            </div>
+                            <div class="col s6 m8 l9">
+                                <h4>Regresión Lineal</h4>
+                                <p style="text-align: justify;"> <b>Resumen:</b> Explorar y analizar la existencia de
+                                    una dependencia lineal entre dos variables numéricas, desde un punto de vista
+                                    gráfico (diagrama de dispersión) y analítico (ajustando el modelo de regresión
+                                    lineal, o recta de regresión, correspondiente).
+                                    Investigar sobre modelos de regresión lineal existentes entre parejas de variables
+                                    numéricas en contextos reales cotidianos asociados a diferentes áreas de
+                                    conocimiento.
+                                    Investigar sobre la estadística de Natalidad y Fecundidad en Navarra.
+                                </p>
+                                <br>
+                                <p style="text-align: justify;"> <b>Nivel:</b> 1º de Bachillerato.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <br>
+                        <p></p>
+                        <a class="btn elevated rounded"
+                            href='https://drive.google.com/file/d/1FkLzuNSl5p29HozHc66W6QZwMdJ8tiCS/view'
+                            target="_blank" style="text-align: center;">Más información</a><br><br>
+                    </div>
+                </li>
+
+
+                <!-- Fin Item número 2 -->
+
+                <!-- Inicio Item número 3 -->
+                <li class="gallery-item all all2 1eso 2eso 3eso 4eso pildora">
+                    <div class="collapsible-header">
+
+
+                        <div class="row valign-wrapper">
+                            <div class="col s6 m4 l3">
+                                <img src="https://drive.google.com/thumbnail?id=17u0G1sJTPk3CDW_AsgtWU9UGog3awhX_"
+                                    alt="" class="responsive-img valign" />
+                            </div>
+                            <div class="col s6 m8 l9">
+                                <h4>Sucesos no equiprobables: Lanzamiento de dos dados (suma)</h4>
+                                <p style="text-align: justify;"> <b>Resumen:</b> Trabajar con experimentos en los que
+                                    los sucesos
+                                    elementales no sean
+                                    equiprobables
+                                </p>
+                                <br>
+                                <p style="text-align: justify;"> <b>Nivel:</b> Desde 1º ESO a 4º ESO. Recomendada para
+                                    2º ESO.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <br>
+                        <a class="btn elevated rounded"
+                            href='https://drive.google.com/file/d/1Thra0twGGBsdtAoi-c1QW3URYeMh3vfD/view?usp=sharing'
+                            target="_blank" style="text-align: center;">Más información</a><br><br>
+                    </div>
+                </li>
+
+                <!-- Fin Item número 3 -->
+
+                <!-- Inicio Item número 4 -->
+                <li class="gallery-item all all2 1eso 2eso 3eso 4eso situacion">
+                    <div class="collapsible-header">
+
+
+                        <div class="row valign-wrapper">
+                            <div class="col s6 m4 l3">
+                                <img src="https://drive.google.com/thumbnail?id=1JyTWpUkjx8joBeSPgdMmOgVc04HJ4a9u"
+                                    alt="" class="responsive-img valign" />
+                            </div>
+                            <div class="col s6 m8 l9">
+                                <h4>La compra del súper</h4>
+                                <p style="text-align: justify;"> <b>Resumen:</b> Determinar la distribución del primer
+                                    dígito significativo en los precios de productos del
+                                    supermercado.&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                </p>
+                                <br>
+                                <p style="text-align: justify;"> <b>Nivel:</b> Desde 1º ESO a 4º ESO. Recomendada para
+                                    3º ESO.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <br>
+                        <a class="btn elevated rounded"
+                            href='https://drive.google.com/file/d/1nx1XcCaQLSffarqz_Jf-GoBLaafS9CoU/view?usp=sharing'
+                            target="_blank" style="text-align: center;">Más información</a><br><br>
+                    </div>
+                </li>
+
+                <!-- Fin Item número 4 -->
+
+                <!-- Inicio Item número 5 CORRELACIÓN LINEAL-->
+                <li class="gallery-item all all2 4eso 1bach situacion">
+                    <div class="collapsible-header">
+
+
+                        <div class="row valign-wrapper">
+                            <div class="col s6 m4 l3">
+                                <img src="https://drive.google.com/thumbnail?id=1bqTOOGeuzQZaVljUQMSNli1_1F-y_4oC"
+                                    alt="" class="responsive-img valign" />
+                            </div>
+                            <div class="col s6 m8 l9">
+                                <h4>Correlación Lineal</h4>
+                                <p style="text-align: justify;"> <b>Resumen:</b> Explorar y analizar la existencia de
+                                    relación lineal entre dos variables
+                                    numéricas, desde un punto de vista gráfico (diagrama de dispersión) y analítico
+                                    (mediante el coeficiente de correlación lineal de Pearson).
+                                    Investigar sobre la existencia de relación entre parejas de variables numéricas
+                                    en contextos reales cotidianos asociados a diferentes áreas de conocimiento.
+                                    Investigar sobre la estadística de Natalidad y Fecundidad en Navarra.
+                                </p>
+                                <br>
+                                <p style="text-align: justify;"> <b>Nivel:</b> 4º ESO. 1º de Bachillerato.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <br>
+                        <a class="btn elevated rounded"
+                            href='https://drive.google.com/file/d/11MniYao_F8HJl5RKSpGaY_2yrRsU_M74/view?usp=sharing'
+                            target="_blank" style="text-align: center;">Más información</a><br><br>
+                    </div>
+                </li>
+
+                <!-- Fin Item número 5 -->
+
+
+
+            </ul>
+            <!-- Fin del Collapsible -->
+
+
+        </div>
+    </section>
+    <!--<div class="footer">
+        <a style='color: black'>Grupo de trabajo de Estadística
+            Educativa del Departamento de Educación del Gobierno de Navarra. Actividades bajo licencia </a>
+        <img src="https://drive.google.com/thumbnail?id=1QN2vgJXVPRa13zAn-ho4iR7BuB8wYIkI" alt=""
+            class="responsive-img valign" width="150" height="18">
+
+    </div>-->
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.2.2/dist/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const elems = document.querySelectorAll('.collapsible');
+            const instances = M.Collapsible.init(elems);
+
+        });
+
+    </script>
+
+    <script>
+        function cerrarcollapsible() {
+            const elems = document.querySelectorAll('.collapsible');
+            const instances = M.Collapsible.init(elems);
+            var instance = instances[0];
+            console.log(instance);
+            for (var i = 0; i < instance._headers.length; i++) {
+                instance.close(i);
+            }
+
+        }
+    </script>
+
+    <script>
+        filterValue = "all", filterValue2 = "all2";
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const filterContainer = document.querySelector('.gallery-filter');
+        const filterContainer2 = document.querySelector('.gallery-filter2');
+
+        filterContainer.addEventListener("click", (event) => {
+            //window.alert("Pulsado botón Curso");
+            if (event.target.classList.contains("filter-item")) {
+                // deactivate existing active 'filter-item'
+                filterContainer.querySelector(".active").classList.remove("active");
+                // activate new 'filter-item'
+                event.target.classList.add("active");
+                filterValue = event.target.getAttribute("data-filter");
+                galleryItems.forEach((item) => {
+                    if (item.classList.contains(filterValue) && item.classList.contains(filterValue2)) {
+                        item.classList.remove("hide");
+                        item.classList.add("show");
+                    }
+                    else {
+                        item.classList.remove("show");
+                        item.classList.add("hide");
+                    }
+                });
+            }
+        });
+
+        filterContainer2.addEventListener("click", (event) => {
+            //window.alert("Pulsado botón Tipo Actividad");
+            if (event.target.classList.contains("filter-item2")) {
+                // deactivate existing active 'filter-item'
+                filterContainer2.querySelector(".active").classList.remove("active");
+                // activate new 'filter-item'
+                event.target.classList.add("active");
+                filterValue2 = event.target.getAttribute("data-filter");
+                galleryItems.forEach((item) => {
+                    if ((item.classList.contains(filterValue) && item.classList.contains(filterValue2))) {
+                        item.classList.remove("hide");
+                        item.classList.add("show");
+                    }
+                    else {
+                        item.classList.remove("show");
+                        item.classList.add("hide");
+                    }
+                });
+            }
+        });
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const elems = document.querySelectorAll('.dropdown-trigger');
+            const instances = M.Dropdown.init(elems, {
+                // specify options here
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
